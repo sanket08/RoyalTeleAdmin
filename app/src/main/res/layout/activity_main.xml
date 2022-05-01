@@ -4,45 +4,77 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:id="@+id/parent">
 
-    <Spinner
-        android:id="@+id/spin_title"
-        android:layout_width="160dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="15dp"
-        android:background="@android:drawable/btn_dropdown"
-        android:layout_above="@id/time_edt"
-        android:layout_centerHorizontal="true"/>
 
-    <EditText
-        android:id="@+id/time_edt"
+
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@id/topPanel"
+            android:src="@drawable/ic_launcher_foreground"/>
+
+
+    <LinearLayout
+        android:id="@+id/topPanel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_margin="15dp"
-        android:hint="HH:MM"
-        android:textSize="22sp" />
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginBottom="18dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:padding="8dp">
 
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:autofillHints="emailAddress"
+            android:scrollbarSize="22dp"
+            android:tooltipText="title"
+            android:layout_weight="3"/>
 
-    <EditText
+        <EditText
+            android:id="@+id/editTextTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HH:MM"
+            android:textSize="20sp"
+            android:layout_weight="2"
+            android:enabled="false"
+            android:textColor="@color/black"/>
+        <ImageButton
+            android:layout_width="55dp"
+            android:layout_height="50dp"
+            android:id="@+id/pick"
+            android:src="@drawable/ic_baseline_access_time_24"
+            android:scaleType="fitXY"
+            android:background="@color/white" />
+    </LinearLayout>
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/title_deec"
-        android:hint="Description"
-        android:textSize="23sp"
-        android:layout_margin="15dp"
-        android:layout_below="@id/time_edt"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Send Notification"
-        android:id="@+id/submit"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/title_deec"/>
+        android:layout_height="150dp"
+        android:layout_below="@id/topPanel"
+        android:layout_margin="18dp"
+        app:boxStrokeColor="@color/blue"
+        app:boxStrokeWidth="3dp"
+        app:boxStrokeWidthFocused="1dp"
+        android:background="@color/white">
 
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Description"
+                android:background="@android:color/transparent"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
 </RelativeLayout>

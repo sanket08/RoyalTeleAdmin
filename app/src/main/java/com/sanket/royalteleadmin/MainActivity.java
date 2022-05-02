@@ -1,6 +1,7 @@
 package com.sanket.royalteleadmin;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.app.AlertDialog;
 import android.app.TimePickerDialog;
@@ -20,7 +21,7 @@ import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    String[] services={"BSNL FIBER","RAIL WIRE"};
+    String[] services={"BSNL FIBER","RAILWIRE"};
     ImageButton imageButton;
     Button submit;
     EditText editText,content;
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
        serve =(Spinner) findViewById(R.id.spinner);
         serve.setOnItemSelectedListener(this);
         ArrayAdapter service = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,services);
@@ -104,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
     private void alertDialoge() {
         AlertDialog.Builder builder= new AlertDialog.Builder(this);
-        builder.setTitle(title + "at"+ time);
+        builder.setTitle(title + " at "+ time);
         builder.setMessage(content.getText());
         AlertDialog alertDialog = builder.create();
         alertDialog.show();

@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:id="@+id/parent">
+    android:id="@+id/parent"
+    android:background="@color/white">
 
 
 
@@ -20,6 +21,7 @@
             android:src="@drawable/ic_launcher_foreground"/>
 
 
+
     <LinearLayout
         android:id="@+id/topPanel"
         android:layout_width="match_parent"
@@ -29,7 +31,7 @@
         android:layout_marginTop="18dp"
         android:layout_marginEnd="18dp"
         android:layout_marginBottom="18dp"
-        android:gravity="center_horizontal"
+        android:gravity="center_horizontal|center_vertical"
         android:orientation="horizontal"
         android:padding="8dp">
 
@@ -51,6 +53,8 @@
             android:textSize="20sp"
             android:layout_weight="2"
             android:enabled="false"
+            android:gravity="center"
+            android:background="@android:color/transparent"
             android:textColor="@color/black"/>
         <ImageButton
             android:layout_width="55dp"
@@ -77,16 +81,18 @@
                 android:layout_height="match_parent"
                 android:id="@+id/desc"
                 android:hint="Description"
-                android:background="@android:color/transparent"/>
+
+                />
     </com.google.android.material.textfield.TextInputLayout>
+
     <Button
+        android:id="@+id/submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/blue"
-        android:text="Send"
-        android:id="@+id/submit"
         android:layout_below="@id/downpanel"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="@color/blue"
+        android:text="Send" />
 
 
 

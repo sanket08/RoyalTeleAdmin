@@ -16,6 +16,7 @@
             android:layout_height="150dp"
             android:layout_centerHorizontal="true"
             android:layout_above="@id/topPanel"
+            android:elevation="10dp"
             android:src="@drawable/ic_launcher_foreground"/>
 
 
@@ -66,6 +67,7 @@
         android:layout_margin="18dp"
         app:boxStrokeColor="@color/blue"
         app:boxStrokeWidth="3dp"
+        android:id="@+id/downpanel"
         app:boxStrokeWidthFocused="1dp"
         android:background="@color/white">
 
@@ -73,8 +75,19 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:id="@+id/desc"
                 android:hint="Description"
                 android:background="@android:color/transparent"/>
     </com.google.android.material.textfield.TextInputLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/blue"
+        android:text="Send"
+        android:id="@+id/submit"
+        android:layout_below="@id/downpanel"
+        android:layout_centerHorizontal="true"/>
+
+
 
 </RelativeLayout>

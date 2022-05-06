@@ -3,9 +3,7 @@ package com.sanket.royalteleadmin;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
-import android.app.AlertDialog;
 import android.app.TimePickerDialog;
-import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,9 +11,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TimePicker;
+
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.Calendar;
 
@@ -33,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        FirebaseMessaging.getInstance().subscribeToTopic("all");
        serve =(Spinner) findViewById(R.id.spinner);
         serve.setOnItemSelectedListener(this);
         ArrayAdapter service = new ArrayAdapter(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,services);
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                alertDialoge();
+                sendNoti();
             }
         });
 
@@ -104,7 +104,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }, hour, minute, false);
         timePickerDialog.show();
     }
-    private void alertDialoge() {
+
+
+   /* private void alertDialoge() {
         AlertDialog.Builder builder= new AlertDialog.Builder(this);
         builder.setTitle(title + " at "+ time);
         builder.setMessage(content.getText());
@@ -112,5 +114,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         alertDialog.show();
 
 
+    }*/
+
+    private void sendNoti() {
+
+        FcmNotificationsSender notificationsSender= new FcmNotificationsSender("topic/all",title+" at " +time,content.getText().toString(),getApplicationContext(),MainActivity.this);
+        notificationsSender.SendNotifications();
     }
+
 }
